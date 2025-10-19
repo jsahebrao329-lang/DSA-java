@@ -15,50 +15,45 @@ class Node {
 
 class Solution {
     public Node copyRandomList(Node head) {
-        if(head==null )
+        if(head==null)
         {
             return null;
         }
-        //copy your origional list
-        Node curr=head;
+         Node curr=head;
+       
         while(curr!=null)
         {
-            Node newNode=new Node(curr.val);
+             Node newNode=new Node(curr.val);
             newNode.next=curr.next;
             curr.next=newNode;
             curr=newNode.next;
-
         }
-        
-        //copy all random pointer
         curr=head;
-       
         while(curr!=null)
         {
             if(curr.random!=null)
             {
                 curr.next.random=curr.random.next;
-               
-
             }
-             curr=curr.next.next;
+            curr=curr.next.next;
         }
-            curr=head;
-            Node newhead=head.next;
-           
-            Node newcurr=newhead;
-            while(curr!=null)
+
+
+        curr=head;
+        Node chead=head.next;
+        Node newcurr=chead;
+        while(curr!=null)
+        {
+            curr.next=newcurr.next;
+            curr=curr.next;
+            if(curr!=null)
             {
-                curr.next=newcurr.next;
-                curr=curr.next;
-                if(curr!=null)
-                {
                 newcurr.next=curr.next;
                 newcurr=newcurr.next;
-                }
-
             }
-        
-        return newhead;
+
+        }
+    return chead;
     }
-}
+
+    }
