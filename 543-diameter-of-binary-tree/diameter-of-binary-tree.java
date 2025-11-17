@@ -14,29 +14,27 @@
  * }
  */
 class Solution {
-    int height(TreeNode root)
-    {
-        if(root==null)
-        {
-            return 0;
-        }
-        int lheight=height(root.left);
-        int rheight=height(root.right);
-        return Math.max(lheight,rheight)+1;
-    }
-    public int diameterOfBinaryTree(TreeNode root) {
-        if(root==null)
-        {
-            return 0;
-        }
-        int ldia=diameterOfBinaryTree(root.left);
-        int rdia=diameterOfBinaryTree(root.right);
-        int curr=height(root.left)+height(root.right);
-        return Math.max(Math.max(ldia,rdia),curr);
-      
 
-        
-    
-    
+    int diameter = 0;   // global variable to store max diameter
+
+    int height(TreeNode root) {
+        if (root == null) return 0;
+
+        // compute left and right subtree heights
+        int lh = height(root.left);
+        int rh = height(root.right);
+
+        // update the global diameter
+        diameter = Math.max(diameter, lh + rh);
+
+        // return height of current node
+        return Math.max(lh, rh) + 1;
+    }
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        height(root);   // this will compute height and update diameter
+        return diameter;
     }
 }
+
+ 
