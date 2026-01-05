@@ -6,7 +6,7 @@ class Solution {
 
         
     }
-    private void backtrack(int[] nums,List<Integer> temp,List<List<Integer>> res)
+    private void backtrack(int[]nums,List<Integer> temp,List<List<Integer>> res)
     {
         if(temp.size()==nums.length)
         {
@@ -26,3 +26,5 @@ class Solution {
         }
     }
 }
+  
+    
