@@ -12,7 +12,7 @@ class Solution {
             x=x/10;
             
         }
-        return flag==rev;
+        return flag==rev || flag==rev/10;
       
         
               
